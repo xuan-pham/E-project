@@ -1,11 +1,11 @@
 import User from "../module/user-module.js";
 import bcrypt from "bcryptjs";
-import {UserValidators} from "../validators/user-validators.js";
+import {registerValidators} from "../validators/auth-validators.js";
 
 // create user
 export const register = async (req, res) => {
     try {
-        const result = await UserValidators.validateAsync(req.body);
+        const result = await registerValidators.validateAsync(req.body);
         if (result.error) {
             return res.status(500).json((result.error.details[0].message));
         }
