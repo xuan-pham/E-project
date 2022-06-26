@@ -1,5 +1,6 @@
 import express from "express";
 import morgan from "morgan";
+import cors from "cors";
 import "dotenv/config";
 import route from "./src/router/index-router.js";
 import connectDB from "./src/config/mongo-db.js";
@@ -9,6 +10,7 @@ const PORT = process.env.PORT || 3000;
 
 // create server
 const app = express();
+app.use(cors());
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
